@@ -6,8 +6,6 @@
     "signing_key": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F",
     "coin_path": "44'/0'",
     "bip32_key": "ed25519 seed",
-    "year": "{% now 'utc', '%Y' %}",
-    "_extensions": ["jinja2_time.TimeExtension"],
     "_copy_without_render": [
         "jolt_wallet"
     ]

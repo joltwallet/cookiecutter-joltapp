@@ -1,2 +1,1 @@
 cookeicutter
-jinja2-time

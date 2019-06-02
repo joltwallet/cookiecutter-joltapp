@@ -1,8 +1,8 @@
 #!/bin/bash -e
 # App Specific Parameters
-APP_BASENAME=Nano
-COIN_PATH="44'/165'"
-BIP32_KEY="ed25519 seed"
+APP_BASENAME="{{cookiecutter.app_name}}"
+COIN_PATH="{{cookiecutter.coin_path}}"
+BIP32_KEY="{{cookiecutter.bip32_key}}"
 ELF2JELF="jolt_wallet/elf2jelf/elf2jelf.py"
 PYTHONBIN="python3"
 
@@ -14,6 +14,9 @@ ELF_BIN_NAME=$(realpath $ELF_BIN_NAME)
 JELF_BIN_NAME=$(realpath $JELF_BIN_NAME)
 JELF_BIN_COMPRESSED_NAME=$(realpath $JELF_BIN_COMPRESSED_NAME)
 ELF2JELF=$(realpath $ELF2JELF)
+
+# e.g. -Wl, build/<component>/lib<component>.a
+ADDITIONAL_LINKER_ARGS=""
 
 # Put some space on the console for easier debugging
 printf "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
@@ -62,6 +65,7 @@ if xtensa-esp32-elf-gcc -Wl,-static -nostartfiles -nodefaultlibs -nostdlib -Os \
     -Wl,-eapp_main \
     -Wl,--warn-unresolved-symbols \
     build/src/libsrc.a \
+    ${ADDITIONAL_LINKER_ARGS} \
     -Wl,-whole-archive build/nano_parse/libnano_parse.a -Wl,-no-whole-archive \
     build/nano_lib/libnano_lib.a \
     ;
