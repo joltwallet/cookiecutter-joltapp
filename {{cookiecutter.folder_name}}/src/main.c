@@ -6,18 +6,18 @@
 #include "menus/submenus.h"
 #include "cmd/cmds.h"
 
-static const char TAG[] = "{{cookiecutter.app_name}}_main";
+static const char TAG[] = "{{cookiecutter.app_var_name}}_main";
 static int console(int argc, char **argv);
 
 int app_main(int argc, char **argv) {
     jolt_gui_obj_t *menu = NULL;
     if( 0 == argc)  {
-        const char title[] = "{{cookiecutter.app_name}}";
+        const char title[] = "{{cookiecutter.app_var_name}}";
         menu = jolt_gui_scr_menu_create(title);
-        jolt_gui_scr_menu_add(menu, NULL, "Balance", menu_{{cookiecutter.app_name}}_balance);
-        jolt_gui_scr_menu_add(menu, NULL, "Send (contact)", menu_{{cookiecutter.app_name}}_contacts);
-        jolt_gui_scr_menu_add(menu, NULL, "Select Account", menu_{{cookiecutter.app_name}}_select_account);
-        jolt_gui_scr_menu_add(menu, NULL, "Address", menu_{{cookiecutter.app_name}}_address);
+        jolt_gui_scr_menu_add(menu, NULL, "Balance", menu_{{cookiecutter.app_var_name}}_balance);
+        jolt_gui_scr_menu_add(menu, NULL, "Send (contact)", menu_{{cookiecutter.app_var_name}}_contacts);
+        jolt_gui_scr_menu_add(menu, NULL, "Select Account", menu_{{cookiecutter.app_var_name}}_select_account);
+        jolt_gui_scr_menu_add(menu, NULL, "Address", menu_{{cookiecutter.app_var_name}}_address);
         jolt_gui_scr_menu_add(menu, NULL, "About", NULL);
         return (int)menu;
     }
@@ -41,7 +41,7 @@ static int console(int argc, char **argv) {
         .command = "my_command_name",
         .help = "Help text here",
         .hint = NULL,
-        .func = {{cookiecutter.app_name}}_function_to_execute,
+        .func = {{cookiecutter.app_var_name}}_function_to_execute,
     };
     jolt_cli_sub_cmd_register(subconsole, &cmd);
 #endif

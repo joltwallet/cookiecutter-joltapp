@@ -6,6 +6,9 @@ BIP32_KEY="{{cookiecutter.bip32_key}}"
 ELF2JELF="jolt_wallet/elf2jelf/elf2jelf.py"
 PYTHONBIN="python3"
 
+# e.g. -Wl, build/<component>/lib<component>.a
+ADDITIONAL_LINKER_ARGS=""
+
 # Convert names to absolute paths and stuff
 ELF_BIN_NAME=${APP_BASENAME}.elf
 JELF_BIN_NAME=${APP_BASENAME}.jelf
@@ -15,8 +18,12 @@ JELF_BIN_NAME=$(realpath $JELF_BIN_NAME)
 JELF_BIN_COMPRESSED_NAME=$(realpath $JELF_BIN_COMPRESSED_NAME)
 ELF2JELF=$(realpath $ELF2JELF)
 
-# e.g. -Wl, build/<component>/lib<component>.a
-ADDITIONAL_LINKER_ARGS=""
+SIGNING_KEY_FILE="signing_key"
+if [ -f "$SIGNING_KEY_FILE" ]; then
+    SIGNING_KEY=`cat $SIGNING_KEY_FILE`
+else
+    SIGNING_KEY="ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB"
+fi
 
 # Put some space on the console for easier debugging
 printf "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"

@@ -1,0 +1,3 @@
+menu "{{cookiecutter.app_name}} Jolt App"
+
+endmenu
