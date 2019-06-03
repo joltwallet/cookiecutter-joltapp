@@ -1,3 +1,17 @@
 menu "{{cookiecutter.app_name}} Jolt App"
 
+config JOLT_{{cookiecutter.app_var_name|upper}}_CONTACTS_MAX
+    int
+    prompt "Maximum number of stored contacts"
+    default 10
+
+config JOLT_{{cookiecutter.app_var_name|upper}}_CONTACTS_NAME_LEN
+    int
+    prompt "Maximum length of Nano contact alias"
+    default 32
+    help
+        Maximum number of characters (excluding null-term) to store for a
+        contact alias.
+
+
 endmenu

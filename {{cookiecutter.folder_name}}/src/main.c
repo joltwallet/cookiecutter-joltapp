@@ -8,17 +8,25 @@
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_main";
 static int console(int argc, char **argv);
+(void) TAG;
+
+const jolt_version_t {{cookiecutter.app_var_name|upper}}_VERSION = {
+    .major = 0,
+    .minor = 1,
+    .patch = 0,
+    .release = JOLT_VERSION_DEV,
+};
 
 int app_main(int argc, char **argv) {
     jolt_gui_obj_t *menu = NULL;
     if( 0 == argc)  {
         const char title[] = "{{cookiecutter.app_var_name}}";
         menu = jolt_gui_scr_menu_create(title);
-        jolt_gui_scr_menu_add(menu, NULL, "Balance", menu_{{cookiecutter.app_var_name}}_balance);
-        jolt_gui_scr_menu_add(menu, NULL, "Send (contact)", menu_{{cookiecutter.app_var_name}}_contacts);
-        jolt_gui_scr_menu_add(menu, NULL, "Select Account", menu_{{cookiecutter.app_var_name}}_select_account);
-        jolt_gui_scr_menu_add(menu, NULL, "Address", menu_{{cookiecutter.app_var_name}}_address);
-        jolt_gui_scr_menu_add(menu, NULL, "About", NULL);
+        jolt_gui_scr_menu_add(menu, NULL, "Balance", {{cookiecutter.app_var_name}}_menu_balance);
+        jolt_gui_scr_menu_add(menu, NULL, "Send (contact)", {{cookiecutter.app_var_name}}_menu_contacts);
+        jolt_gui_scr_menu_add(menu, NULL, "Select Account", {{cookiecutter.app_var_name}}_menu_select_account);
+        jolt_gui_scr_menu_add(menu, NULL, "Address", {{cookiecutter.app_var_name}}_menu_address);
+        jolt_gui_scr_menu_add(menu, NULL, "About", {{cookiecutter.app_var_name}}_menu_address);
         return (int)menu;
     }
     else {
