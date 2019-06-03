@@ -13,7 +13,7 @@ static void index_cb( jolt_gui_obj_t *btn_sel, jolt_gui_event_t event ) {
         int32_t index = jolt_gui_scr_menu_get_btn_index( btn_sel );
         if( index >= 0 ) {
             ESP_LOGI(TAG, "Saving index %d", index);
-            {{cookiecutter.app_ver_name}}_index_set(NULL, index);
+            {{cookiecutter.app_var_name}}_index_set(NULL, index);
         }
         else {
             ESP_LOGE(TAG, "Selected button not found in list");
@@ -25,7 +25,7 @@ static void index_cb( jolt_gui_obj_t *btn_sel, jolt_gui_event_t event ) {
 static void select_account_cb( void *dummy ) {
     const char title[] = "{{cookiecutter.app_name}}";
 
-    uint32_t index = {{cookiecutter.app_ver_name}}_index_get(NULL);
+    uint32_t index = {{cookiecutter.app_var_name}}_index_get(NULL);
     ESP_LOGI(TAG, "Current {{cookiecutter.app_name}} Address Derivation Index: %d", index);
 
     jolt_gui_obj_t *menu = jolt_gui_scr_menu_create(title);

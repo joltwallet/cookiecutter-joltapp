@@ -47,7 +47,7 @@ static void confirmation_cb( jolt_gui_obj_t *obj, jolt_gui_event_t event ) {
 }
 
 static int confirmation_create() {
-    char buf[strlen(confirmation_update_str) + CONFIG_JOLT_{{cookiecutter.app_ver_name|upper}}_CONTACTS_NAME_LEN + 1];
+    char buf[strlen(confirmation_update_str) + CONFIG_JOLT_{{cookiecutter.app_var_name|upper}}_CONTACTS_NAME_LEN + 1];
     /* Verify it's a valid address */
     {
         public_key_t pub_key;
