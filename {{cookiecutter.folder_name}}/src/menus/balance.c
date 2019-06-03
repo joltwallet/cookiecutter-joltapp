@@ -2,17 +2,20 @@
 
 #include "jolt_lib.h"
 #include "submenus.h"
+#include "{cookiecutter.app_var_name}_network.h"
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_menu_balance";
 static const char TITLE[] = "{{cookiecutter.app_name}} Balance";
 (void) TAG;
 
 void {{cookiecutter.app_var_name}}_menu_balance_cb( void *dummy ) {
-    jolt_gui_obj_t *scr = jolt_gui_scr_preloading_create(TITLE, "Contacting Server");
-
-    char address[ADDRESS_BUF_LEN];
-    {{cookiecutter.app_var_name}}_get_address( address );
-    {{cookiecutter.app_var_name}}_network_frontier_block( address, frontier_cb, NULL, scr );
+    jolt_gui_obj_t *scr;
+    scr = jolt_gui_scr_preloading_create(TITLE, "Contacting Server");
+    if( NULL == scr ) {
+        return;
+    }
+    /* TODO: Call a network command to get balance */ 
+    jolt_gui_scr_set_event_cb(scr, jolt_gui_event_del);
 }
 
 void {{cookiecutter.app_var_name}}_menu_balance( jolt_gui_obj_t *btn, jolt_gui_event_t event ) {

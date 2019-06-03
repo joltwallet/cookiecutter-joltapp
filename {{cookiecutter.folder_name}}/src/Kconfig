@@ -7,11 +7,35 @@ config JOLT_{{cookiecutter.app_var_name|upper}}_CONTACTS_MAX
 
 config JOLT_{{cookiecutter.app_var_name|upper}}_CONTACTS_NAME_LEN
     int
-    prompt "Maximum length of Nano contact alias"
+    prompt "Maximum length of contact alias"
     default 32
     help
         Maximum number of characters (excluding null-term) to store for a
         contact alias.
+
+config JOLT_{{cookiecutter.app_var_name|upper}}_SEND_DIGITS
+    int
+    prompt "Total number of digit rollers prompted during a send"
+    default 10
+    help
+        Total number of digits (including decimals) to prompt the user when
+        they are performing a contact send.
+
+config JOLT_{{cookiecutter.app_var_name|upper}}_SEND_DECIMALS
+    int
+    prompt "Number of decimals prompted during a send"
+    default 3
+    help
+        Number of decimals to display to the user when they are performaing a
+        contact send.
+
+config JOLT_{{cookiecutter.app_var_name|upper}}_CONFIRM_DECIMALS
+    int
+    prompt "Number of decimals prompted during a send"
+    default 3
+    help
+        Number of decimals to display to the user when confirming transaction 
+        data.
 
 
 endmenu

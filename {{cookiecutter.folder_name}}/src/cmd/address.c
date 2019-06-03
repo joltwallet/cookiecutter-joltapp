@@ -2,9 +2,12 @@
 
 #include "jolt_lib.h"
 #include "cmds.h"
+#include "{{cookiecutter.app_var_name}}_helpers.h"
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_cmd_address";
 (void) TAG;
+
+static uint32_t lower, upper;
 
 void success_cb( void *param ) {
     for(uint32_t index=lower; index<=upper; index++ ){
@@ -34,6 +37,7 @@ int {{cookiecutter.app_var_name}}_cmd_address(int argc, char ** argv) {
         upper = lower;
     }
     else{
+        /* Print range of addresses */
         lower = atoi( argv[1] );
         if( 3 == argc ){
             upper = atoi(argv[2]);

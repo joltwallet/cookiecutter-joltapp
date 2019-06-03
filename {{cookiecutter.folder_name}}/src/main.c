@@ -44,15 +44,22 @@ static int console(int argc, char **argv) {
     esp_console_cmd_t cmd;
     jolt_cli_sub_t *subconsole = jolt_cli_sub_init();
 
-#if 0 /* Example on how to register a command. Function must take in argc and argv */
     cmd = (esp_console_cmd_t) {
-        .command = "my_command_name",
-        .help = "Help text here",
+        .command = "address",
+        .help = "Get the {{cookiecutter.app_name}} address at derivation index or index range",
         .hint = NULL,
-        .func = {{cookiecutter.app_var_name}}_function_to_execute,
+        .func = {{cookiecutter.app_var_name}}_cmd_address,
     };
     jolt_cli_sub_cmd_register(subconsole, &cmd);
-#endif
+
+    cmd = (esp_console_cmd_t) {
+        .command = "contact",
+        .help = "Update {{cookiecutter.app_name}} contact",
+        .hint = NULL,
+        .func = {{cookiecutter.app_var_name}}_cmd_contact,
+    };
+    jolt_cli_sub_cmd_register(subconsole, &cmd);
+
 
     ESP_LOGD(TAG, "Running %s", argv[0]);
     int res = jolt_cli_sub_cmd_run(subconsole, argc, argv);
