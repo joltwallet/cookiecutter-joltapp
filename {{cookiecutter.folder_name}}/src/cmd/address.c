@@ -5,7 +5,6 @@
 #include "{{cookiecutter.app_var_name}}_helpers.h"
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_cmd_address";
-(void) TAG;
 
 static uint32_t lower, upper;
 
@@ -24,6 +23,7 @@ void failure_cb( void *param ) {
 }
 
 int {{cookiecutter.app_var_name}}_cmd_address(int argc, char ** argv) {
+    ESP_LOGD(TAG, "{cookiecutter.app_var_name} address invoked");
     /* Argument Verification */
     if( !console_check_range_argc(argc, 1, 3) ){
         return 1;

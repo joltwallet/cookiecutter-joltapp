@@ -2,10 +2,10 @@
 
 #include "jolt_lib.h"
 #include "submenus.h"
+#include "{{cookiecutter.app_var_name}}_helpers.h"
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_menu_select_account";
-static const char TITLE[] = "{{cookiecutter.app_var_name}} Account";
-(void) TAG;
+static const char TITLE[] = "Account";
 
 /* Stores the selected index to config */
 static void index_cb( jolt_gui_obj_t *btn_sel, jolt_gui_event_t event ) {
@@ -18,17 +18,15 @@ static void index_cb( jolt_gui_obj_t *btn_sel, jolt_gui_event_t event ) {
         else {
             ESP_LOGE(TAG, "Selected button not found in list");
         }
-        jolt_gui_scr_del();
+        jolt_gui_scr_del( btn_sel );
     }
 }
 
 static void select_account_cb( void *dummy ) {
-    const char title[] = "{{cookiecutter.app_name}}";
-
     uint32_t index = {{cookiecutter.app_var_name}}_index_get(NULL);
     ESP_LOGI(TAG, "Current {{cookiecutter.app_name}} Address Derivation Index: %d", index);
 
-    jolt_gui_obj_t *menu = jolt_gui_scr_menu_create(title);
+    jolt_gui_obj_t *menu = jolt_gui_scr_menu_create( TITLE );
     jolt_gui_obj_t *sel = NULL;
 
     for(uint8_t i=0; i < CONFIG_JOLT_{{cookiecutter.app_var_name|upper}}_CONTACTS_MAX; i++) {

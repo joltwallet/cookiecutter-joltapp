@@ -6,7 +6,6 @@
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_cmd_contact";
 static const char TITLE[] = "{{cookiecutter.app_name}} Contacts";
-(void) TAG;
 static const char confirmation_add_str[]    = "Add contact:\nName: %s\nAddress:";
 static const char confirmation_update_str[] = "Update contact %d to:\nName: %s\nAddress:";
 
@@ -37,11 +36,11 @@ static void confirmation_cb( jolt_gui_obj_t *obj, jolt_gui_event_t event ) {
         }
         cJSON_AddItemToArray(contacts, new_contact);
         jolt_json_write_app( json );
-        jolt_gui_scr_del();
+        jolt_gui_scr_del( obj );
         cleanup(0);
     }
     else if( jolt_gui_event.cancel == event ){
-        jolt_gui_scr_del();
+        jolt_gui_scr_del( obj );
         cleanup(-1);
     }
 }
@@ -81,6 +80,8 @@ static int confirmation_create() {
 
 
 int {{cookiecutter.app_var_name}}_cmd_contact(int argc, char ** argv) {
+    ESP_LOGD(TAG, "{cookiecutter.app_var_name} contact invoked");
+
     /* Argument Verification */
     if( !console_check_range_argc(argc, 2, 5) ){
         return 1;

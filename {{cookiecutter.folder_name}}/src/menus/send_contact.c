@@ -2,12 +2,12 @@
 
 #include "jolt_lib.h"
 #include "submenus.h"
+#include "{{cookiecutter.app_var_name}}_helpers.h"
+#include "{{cookiecutter.app_var_name}}_network.h"
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_menu_send_contact";
 static const char TITLE[] = "Contacts";
 static const char TITLE_SEND[] = "Send";
-
-(void) TAG;
 
 typedef struct {
     struct{
@@ -94,7 +94,6 @@ static void processing_cb_1( jolt_gui_obj_t *num_scr, jolt_gui_event_t event ) {
             }
             dst_address = cJSON_GetStringValue( json_address );
             ESP_LOGD(TAG, "Contact address: %s", dst_address);
-            nl_address_to_public(d->block.send.link, dst_address);
         }
 
         /* Populate transaction Amount. */
@@ -131,7 +130,7 @@ static void processing_cb_2( void *param ) {
     /***********************************************
      * Get My Public Key, Private Key, and Address *
      ***********************************************/
-    if( !{{cookiecutter.app_var_name}}_index_get_private_public_address(NULL, d->block.send.account, my_address, d->cfg.account_index) ) {
+    if( !{{cookiecutter.app_var_name}}_index_get_private_public_address(NULL, NULL, my_address, d->cfg.account_index) ) {
         goto exit;
     }
     ESP_LOGI(TAG, "My Address: %s\n", my_address);
@@ -168,7 +167,7 @@ static void contact_cb( jolt_gui_obj_t *btn_sel, jolt_gui_event_t event ) {
     }
 }
 
-void {{cookiecutter.app_var_name}}_menu_send_contacts(jolt_gui_obj_t *btn, jolt_gui_event_t event) {
+void {{cookiecutter.app_var_name}}_menu_send_contact(jolt_gui_obj_t *btn, jolt_gui_event_t event) {
     if(jolt_gui_event.short_clicked == event){
         /* Create context */
         ESP_LOGD(TAG, "Allocating space for send context");

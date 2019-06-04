@@ -3,6 +3,8 @@
 
 #include "jolt_lib.h"
 
+#define ADDRESS_BUF_LEN 100 /* Tweak this to fit your coin's longest address */
+
 typedef unsigned char private_key_t[{{cookiecutter.private_key_bytes}}];
 typedef unsigned char public_key_t[{{cookiecutter.private_key_bytes}}];
 

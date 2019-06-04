@@ -1,4 +1,4 @@
-PROJECT_NAME := "{{cookiecutter.app_name}}"
+PROJECT_NAME := "{{cookiecutter.app_var_name}}"
 
 EXTRA_COMPONENT_DIRS = \
         $(PROJECT_PATH)/src \

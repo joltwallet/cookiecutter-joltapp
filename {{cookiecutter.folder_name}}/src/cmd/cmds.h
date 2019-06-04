@@ -1,5 +1,5 @@
 #ifndef JOLT_{{cookiecutter.app_var_name|upper}}_CMDS_H__
-#ifndef JOLT_{{cookiecutter.app_var_name|upper}}_CMDS_H__
+#define JOLT_{{cookiecutter.app_var_name|upper}}_CMDS_H__
 
 /**
  * @brief Print info about the app
@@ -40,6 +40,6 @@ int {{cookiecutter.app_var_name}}_cmd_address(int argc, char ** argv);
  * @return 0 on success
  *
  */
-int nano_cmd_contact(int argc, char **argv);
+int {{cookiecutter.app_var_name}}_cmd_contact(int argc, char **argv);
 
 #endif
