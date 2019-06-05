@@ -1,6 +1,6 @@
 #!/bin/bash -e
 # App Specific Parameters
-APP_BASENAME="{{cookiecutter.app_name}}"
+APP_BASENAME="{{cookiecutter.app_name|replace(' ','_')}}"
 COIN_PATH="{{cookiecutter.coin_path}}"
 BIP32_KEY="{{cookiecutter.bip32_key}}"
 ELF2JELF="jolt_wallet/elf2jelf/elf2jelf.py"
