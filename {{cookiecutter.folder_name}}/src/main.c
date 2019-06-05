@@ -19,7 +19,7 @@ const jolt_version_t {{cookiecutter.app_var_name|upper}}_VERSION = {
 int app_main(int argc, char **argv) {
     jolt_gui_obj_t *menu = NULL;
     if( 0 == argc)  {
-        ESP_LOGD(TAG, "{cookiecutter.app_var_name} creating GUI");
+        ESP_LOGD(TAG, "{cookiecutter.app_name} creating GUI");
         const char title[] = "{{cookiecutter.app_var_name}}";
         menu = jolt_gui_scr_menu_create(title);
         jolt_gui_scr_menu_add(menu, NULL, "Balance", {{cookiecutter.app_var_name}}_menu_balance);
