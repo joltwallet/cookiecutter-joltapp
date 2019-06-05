@@ -10,13 +10,13 @@ PYTHONBIN="python3"
 ADDITIONAL_LINKER_ARGS=""
 
 # Convert names to absolute paths and stuff
-ELF_BIN_NAME=${APP_BASENAME}.elf
-JELF_BIN_NAME=${APP_BASENAME}.jelf
-JELF_BIN_COMPRESSED_NAME=${JELF_BIN_NAME}.gz
-ELF_BIN_NAME=$(realpath $ELF_BIN_NAME)
-JELF_BIN_NAME=$(realpath $JELF_BIN_NAME)
-JELF_BIN_COMPRESSED_NAME=$(realpath $JELF_BIN_COMPRESSED_NAME)
-ELF2JELF=$(realpath $ELF2JELF)
+ELF_BIN_NAME="${APP_BASENAME}.elf"
+JELF_BIN_NAME="${APP_BASENAME}.jelf"
+JELF_BIN_COMPRESSED_NAME="${JELF_BIN_NAME}.gz"
+ELF_BIN_NAME="$(realpath $ELF_BIN_NAME)"
+JELF_BIN_NAME="$(realpath $JELF_BIN_NAME)"
+JELF_BIN_COMPRESSED_NAME="$(realpath $JELF_BIN_COMPRESSED_NAME)"
+ELF2JELF="$(realpath $ELF2JELF)"
 
 SIGNING_KEY_FILE="signing_key"
 if [ -f "$SIGNING_KEY_FILE" ]; then
@@ -52,14 +52,14 @@ else
     echo "Error detecting operating system."
 fi
 
-if [ -f ${ELF_BIN_NAME} ] ; then
-    rm ${ELF_BIN_NAME}
+if [ -f "${ELF_BIN_NAME}" ] ; then
+    rm "${ELF_BIN_NAME}"
 fi
-if [ -f ${JELF_BIN_NAME} ] ; then
-    rm ${JELF_BIN_NAME}
+if [ -f "${JELF_BIN_NAME}" ] ; then
+    rm "${JELF_BIN_NAME}"
 fi
-if [ -f ${JELF_BIN_COMPRESSED_NAME} ] ; then
-    rm ${JELF_BIN_COMPRESSED_NAME}
+if [ -f "${JELF_BIN_COMPRESSED_NAME}" ] ; then
+    rm "${JELF_BIN_COMPRESSED_NAME}"
 fi
 
 make app -j15
@@ -67,14 +67,12 @@ make app -j15
 if xtensa-esp32-elf-gcc -Wl,-static -nostartfiles -nodefaultlibs -nostdlib -Os \
     -ffunction-sections -fdata-sections -Wl,--gc-sections \
     -Wl,-T${IDF_PATH}/components/esp_rom/esp32/ld/esp32.rom.newlib-nano.ld \
-    -Wl,-T${IDF_PATH}/components/esp_rom/esp32/ld/esp32.rom.ld -s -o ${ELF_BIN_NAME} \
+    -Wl,-T${IDF_PATH}/components/esp_rom/esp32/ld/esp32.rom.ld -s -o "${ELF_BIN_NAME}" \
     -Wl,-r \
     -Wl,-eapp_main \
     -Wl,--warn-unresolved-symbols \
     build/src/libsrc.a \
     ${ADDITIONAL_LINKER_ARGS} \
-    -Wl,-whole-archive build/nano_parse/libnano_parse.a -Wl,-no-whole-archive \
-    build/nano_lib/libnano_lib.a \
     ;
 then
     echo "Successfully assembled ELF"
@@ -91,7 +89,7 @@ xtensa-esp32-elf-objcopy --remove-section=.comment \
          --remove-section=.xt.lit \
          --remove-section=.rela.xt.lit \
          --remove-section=.text \
-         $ELF_BIN_NAME
+         "$ELF_BIN_NAME"
 
 #######################
 # Convert ELF to JELF #
