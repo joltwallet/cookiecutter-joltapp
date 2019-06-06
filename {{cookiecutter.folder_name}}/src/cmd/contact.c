@@ -15,6 +15,20 @@ static int idx = 0;
 static char *name = NULL;
 static char *address = NULL;
 
+/**
+ * @ Print entire address book
+ */
+static void print_addresses(){
+    char *json_str = cJSON_Print(contacts);
+    printf(json_str);
+    free(json_str);
+}
+
+/**
+ * @brief Deallocates json objects and sends return_code to CLI manager
+ *
+ * @param return_code Return code to send to CLI manager.
+ */
 static void cleanup(int return_code) {
     jolt_json_del(json);
     idx = 0;
@@ -25,7 +39,7 @@ static void cleanup(int return_code) {
     jolt_cli_return(return_code);
 }
 
-static void confirmation_cb( jolt_gui_obj_t *obj, jolt_gui_event_t event ) {
+static void confirmation_create_cb( jolt_gui_obj_t *obj, jolt_gui_event_t event ) {
     if( jolt_gui_event.short_clicked == event ) {
         cJSON *new_contact = cJSON_CreateObject();
         if( NULL == cJSON_AddStringToObject(new_contact, "name", name) ) {
@@ -47,21 +61,20 @@ static void confirmation_cb( jolt_gui_obj_t *obj, jolt_gui_event_t event ) {
 
 static int confirmation_create() {
     char buf[strlen(confirmation_update_str) + CONFIG_JOLT_{{cookiecutter.app_var_name|upper}}_CONTACTS_NAME_LEN + 1];
+
     /* Verify it's a valid address */
     {
-        public_key_t pub_key;
-        
-        /* TODO: Convert public key to address here */
+        /* TODO: Verify address here */
         // address_to_public(pub_key, address);
-        strcpy(address, "ADDRESS_PLACEHOLDER");
 
         /* Copy the name and address to persist */
         char *tmp = NULL;
-        tmp = malloc(strlen(address) + 1);
+
+        tmp = malloc(strlen(address) + 1); // todo: error check
         strcpy(tmp, address);
         address = tmp;
 
-        tmp = malloc(strlen(name) + 1);
+        tmp = malloc(strlen(name) + 1); // todo: error check
         strcpy(tmp, name);
         name = tmp;
     }
@@ -74,7 +87,7 @@ static int confirmation_create() {
     jolt_gui_obj_t *scr = NULL;
     scr = jolt_gui_scr_text_create(TITLE, buf);
     jolt_gui_scr_scroll_add_monospace_text(scr, address);
-    jolt_gui_scr_set_event_cb(scr, confirmation_cb);
+    jolt_gui_scr_set_event_cb(scr, confirmation_create_cb);
     return JOLT_CLI_NON_BLOCKING;
 }
 
@@ -93,7 +106,8 @@ int {{cookiecutter.app_var_name}}_cmd_contact(int argc, char ** argv) {
 
     /* More specific argument verification */
     if( 0 == strcmp(argv[1], "print") ) {
-        printf("not yet implemented\n");
+        print_addresses();
+        return 0;
     }
     else if( 0 == strcmp(argv[1], "delete") ) {
         printf("not yet implemented\n");

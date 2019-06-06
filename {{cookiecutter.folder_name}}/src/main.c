@@ -20,13 +20,13 @@ int app_main(int argc, char **argv) {
     jolt_gui_obj_t *menu = NULL;
     if( 0 == argc)  {
         ESP_LOGD(TAG, "{cookiecutter.app_name} creating GUI");
-        const char title[] = "{{cookiecutter.app_var_name}}";
+        const char title[] = "{{cookiecutter.app_name}}";
         menu = jolt_gui_scr_menu_create(title);
         jolt_gui_scr_menu_add(menu, NULL, "Balance", {{cookiecutter.app_var_name}}_menu_balance);
-        jolt_gui_scr_menu_add(menu, NULL, "Send (contact)", {{cookiecutter.app_var_name}}_menu_send_contact);
+        jolt_gui_scr_menu_add(menu, NULL, "Send", {{cookiecutter.app_var_name}}_menu_send_contact);
         jolt_gui_scr_menu_add(menu, NULL, "Select Account", {{cookiecutter.app_var_name}}_menu_select_account);
         jolt_gui_scr_menu_add(menu, NULL, "Address", {{cookiecutter.app_var_name}}_menu_address);
-        jolt_gui_scr_menu_add(menu, NULL, "About", {{cookiecutter.app_var_name}}_menu_address);
+        jolt_gui_scr_menu_add(menu, NULL, "About", {{cookiecutter.app_var_name}}_menu_about);
         return (int)menu;
     }
     else {
