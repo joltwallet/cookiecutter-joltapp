@@ -5,8 +5,8 @@
 
 #define ADDRESS_BUF_LEN 100 /* Tweak this to fit your coin's longest address */
 
-typedef unsigned char private_key_t[{{cookiecutter.private_key_bytes}}];
-typedef unsigned char public_key_t[{{cookiecutter.private_key_bytes}}];
+typedef unsigned char *private_key_t;
+typedef unsigned char *public_key_t;
 
 extern const jolt_version_t {{cookiecutter.app_var_name|upper}}_VERSION;
 

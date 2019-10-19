@@ -3,11 +3,8 @@
     "app_name": "My Jolt App",
     "app_var_name": "{{ cookiecutter.app_name|lower|replace(' ', '_')|replace('-', '_')|replace('+','_')|replace('=', '_') }}",
     "folder_name": "{{ cookiecutter.app_var_name }}_joltapp",
-    "signing_key": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F",
     "coin_path": "44'/0'",
     "bip32_key": "ed25519 seed",
-    "private_key_bytes": 32,
-    "public_key_bytes": 32,
     "_copy_without_render": [
         "jolt_wallet"
     ]
