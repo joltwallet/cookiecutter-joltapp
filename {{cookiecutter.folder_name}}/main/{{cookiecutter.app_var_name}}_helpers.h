@@ -5,8 +5,9 @@
 
 #define ADDRESS_BUF_LEN 100 /* Tweak this to fit your coin's longest address */
 
-typedef unsigned char *private_key_t;
-typedef unsigned char *public_key_t;
+/* This makes a 32-byte key assumption. This is not valid for all coins */
+typedef unsigned char private_key_t[32];
+typedef unsigned char public_key_t[32];
 
 extern const jolt_version_t {{cookiecutter.app_var_name|upper}}_VERSION;
 

@@ -18,7 +18,6 @@ cJSON *{{cookiecutter.app_var_name}}_get_json() {
  * @return verified good json data. Will reboot if it cannot be produced.
  */
 static cJSON *verify_json( cJSON *json ) {
-#define EXIT_IF_NULL(x) save = true; if( NULL == x ) goto exit;
     bool save = false; // Write file at end of verification
     if( NULL == json ) {
         /* Create Default JSON */
@@ -27,10 +26,12 @@ static cJSON *verify_json( cJSON *json ) {
 
     if( NULL == cJSON_Get(json, "index") ) {
         ESP_LOGW(TAG, "key %s not found", "index");
+        save = true;
         EXIT_IF_NULL(cJSON_AddNumberToObject(json, "index", 0) );
     }
     if( NULL == cJSON_Get(json, "contacts") ) {
         ESP_LOGW(TAG, "key %s not found", "index");
+        save = true;
         EXIT_IF_NULL( cJSON_AddArrayToObject(json, "contacts") );
     }
     if( save ) {
@@ -41,7 +42,6 @@ exit:
     assert( false ); // force a reboot
     jolt_json_del(json);
     return NULL;
-#undef EXIT_IF_NULL
 }
 
 uint32_t {{cookiecutter.app_var_name}}_index_get( cJSON * json ) {
