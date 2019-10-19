@@ -1,5 +1,6 @@
 #!/bin/bash -e
+git submodule update --init --recursive
 cp jolt_wallet/sdkconfig.defaults .
-cp jolt_wallet/partitions.csv .
+source jolt_wallet/export.sh
 make defconfig >> /dev/null
-./build.sh
+make japp
