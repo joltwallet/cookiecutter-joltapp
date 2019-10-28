@@ -7,7 +7,7 @@
 #include "cmd/cmds.h"
 
 static const char TAG[] = "{{cookiecutter.app_var_name}}_main";
-static int console(int argc, char **argv);
+static int console(int argc, const char **argv);
 
 const jolt_version_t {{cookiecutter.app_var_name|upper}}_VERSION = {
     .major = 0,
@@ -35,7 +35,7 @@ int japp_main(int argc, char **argv) {
     }
 }
 
-static int console(int argc, char **argv) {
+static int console(int argc, const char **argv) {
     /* Entry point for console commands.
      *
      * Design philosophy:
