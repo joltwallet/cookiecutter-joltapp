@@ -1,4 +1,4 @@
-{{cookiecutter.app_name}} application for Jolt Hardware Wallet
+{{cookiecutter.app_name}} application for [Jolt Hardware Wallet](https://github.com/joltwallet/jolt_wallet)
 
 # {{cookiecutter.app_name}}
 
