@@ -1,3 +1,5 @@
 #!/bin/bash -e
+
 git init
-git submodule update --init --recursive
+git add .
+git commit -a -m "Initial Cookiecutter Commit (0.0.0)."

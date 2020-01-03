@@ -3,8 +3,4 @@
 
 static const char MODULE_NAME[] = "[{{cookiecutter.app_name}}/example]";
 
-TEST_CASE( "test", MODULE_NAME )
-{
-    printf("test\n");
-}
-
+TEST_CASE( "test", MODULE_NAME ) { printf( "test\n" ); }

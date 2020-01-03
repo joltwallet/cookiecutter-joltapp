@@ -1,4 +1,17 @@
 
+###################
+# Build Artifacts #
+###################
+
+sdkconfig
+sdkconfig.defaults
 build/
+
+{{cookiecutter.app_name|replace(' ', '\\ ')}}.elf
+{{cookiecutter.app_name|replace(' ', '\\ ')}}.jelf
+
+###########
+# Secrets #
+###########
 
 signing_key

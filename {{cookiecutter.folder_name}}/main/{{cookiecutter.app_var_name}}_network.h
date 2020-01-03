@@ -4,8 +4,8 @@
  * @author {{cookiecutter.full_name}}
  */
 
-#ifndef JOLT_{{cookiecutter.app_var_name|upper}}_NETWORK_H__
-#define JOLT_{{cookiecutter.app_var_name|upper}}_NETWORK_H__
+#ifndef JOLT_{{cookiecutter.app_var_name | upper}}_NETWORK_H__
+#define JOLT_{{cookiecutter.app_var_name | upper}}_NETWORK_H__
 
 #include "jolt_lib.h"
 

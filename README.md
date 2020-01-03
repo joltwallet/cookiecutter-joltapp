@@ -27,7 +27,40 @@ The prompts are described in more detail as below.
 6. `bip32_key` - The derivation seed string. Typically `Bitcoin seed` or `ed25519 seed`
 
 
-# TODO
+# Features
 
-* Replace dummy default `app_key` with real public key
-*
+This cookiecutter performs the following actions or sets up to allow you to perform
+the following actions:
+
+## Git
+
+Git will be initialized and all the files will be commited indicating 
+the cookiecutter version and commit you used.
+
+Build artifacts will already be in the `.gitignore`
+
+## Build system
+
+The Makefile will already be populated so that you can immediately build your
+application. See your app's README for more information.
+
+ESP-IDF style components can be added to the `components` directory and will
+automatically be detected by the build system.
+
+## Versioning
+
+Use `bumpversion` to manage your app's version.
+
+```
+pip3 install bumpversion
+```
+
+This template already has a `.bumpversion.cfg` populated for you. In your project's
+clean (no unstaged changes) root directory, the following commands will increase
+the version number and commit the version change:
+
+```
+bumpversion major  # For backwards incompatible changes.
+bumpversion minor  # For backwards compatible feature updates
+bumpversion patch  # For bug fixes
+```
