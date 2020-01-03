@@ -49,10 +49,11 @@ automatically be detected by the build system.
 
 ## Versioning
 
-Use `bumpversion` to manage your app's version.
+Use `bump2version` to manage your app's version. `bump2version` is a maintained
+fork of `bumpversion`.
 
 ```
-pip3 install bumpversion
+pip3 install bump2version
 ```
 
 This template already has a `.bumpversion.cfg` populated for you. In your project's
@@ -60,7 +61,13 @@ clean (no unstaged changes) root directory, the following commands will increase
 the version number and commit the version change:
 
 ```
-bumpversion major  # For backwards incompatible changes.
-bumpversion minor  # For backwards compatible feature updates
-bumpversion patch  # For bug fixes
+bump2version major  # For backwards incompatible changes.
+bump2version minor  # For backwards compatible feature updates
+bump2version patch  # For bug fixes
+```
+
+I recommend adding the alias to your `~/.bashrc`
+
+```
+alias bumpversion="bump2version"
 ```

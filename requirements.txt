@@ -1,2 +1,2 @@
 cookeicutter
-versionbump
+bump2version
