@@ -1,7 +1,0 @@
-[submodule "{{cookiecutter.app_name}}/jolt_wallet"]
-	path = {{cookiecutter.app_name}}/jolt_wallet
-	url = git@github.com:joltwallet/jolt_wallet.git
-[submodule "{{cookiecutter.folder_name}}/jolt_wallet"]
-	path = {{cookiecutter.folder_name}}/jolt_wallet
-	url = git@github.com:joltwallet/jolt_wallet.git
-	branch = joltos
